@@ -14,6 +14,9 @@ public class Exam {
     @NotNull(message = "Nome do exame é obrigatório")
     private String exam_name;
 
+    @OneToMany(mappedBy = "exam")
+    Set<ExamsMade> examMade;
+
 
     public Long getExam_id() {
         return exam_id;
@@ -29,5 +32,13 @@ public class Exam {
 
     public void setExam_name(String exam_name) {
         this.exam_name = exam_name;
+    }
+
+    public Set<ExamsMade> getExamMade() {
+        return examMade;
+    }
+
+    public void setExamMade(Set<ExamsMade> examMade) {
+        this.examMade = examMade;
     }
 }

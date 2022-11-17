@@ -1,4 +1,3 @@
-/*
 package com.challengeBackend.socbackend.controller;
 import com.challengeBackend.socbackend.model.Exam;
 import com.challengeBackend.socbackend.model.ExamsMade;
@@ -26,4 +25,4 @@ public class ExamsMadeController {
 
 }
 
- */
+

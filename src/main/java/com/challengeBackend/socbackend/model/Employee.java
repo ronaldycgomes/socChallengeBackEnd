@@ -15,6 +15,9 @@ public class Employee {
     @NotNull(message = "Nome do funcionário é obrigatório")
     private String employee_name;
 
+    @OneToMany(mappedBy = "employee")
+    Set<ExamsMade> examMade;
+
 
     public Long getEmployee_id() {
         return employee_id;
@@ -30,5 +33,13 @@ public class Employee {
 
     public void setEmployee_name(String employee_name) {
         this.employee_name = employee_name;
+    }
+
+    public Set<ExamsMade> getExamMade() {
+        return examMade;
+    }
+
+    public void setExamMade(Set<ExamsMade> examMade) {
+        this.examMade = examMade;
     }
 }
