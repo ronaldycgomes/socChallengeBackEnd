@@ -1,4 +1,6 @@
 package com.challengeBackend.socbackend.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -14,7 +16,7 @@ public class Employee {
     @NotEmpty(message = "Nome do funcionário é obrigatório")
     @NotNull(message = "Nome do funcionário é obrigatório")
     private String employee_name;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "employee")
     Set<ExamsMade> examMade;
 

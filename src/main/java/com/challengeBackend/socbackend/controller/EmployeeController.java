@@ -5,6 +5,7 @@ import com.challengeBackend.socbackend.model.Employee;
 import com.challengeBackend.socbackend.model.Exam;
 import com.challengeBackend.socbackend.repository.EmployeeRepository;
 import com.challengeBackend.socbackend.repository.ExamRepository;
+import com.challengeBackend.socbackend.repository.ExamsMadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -15,8 +16,13 @@ import java.util.List;
 @CrossOrigin("http://localhost:3000")
 public class EmployeeController {
 
+
     @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private ExamsMadeRepository examsMadeRepository;
+
 
     @PostMapping("/employee")
     Employee newEmployee (@Valid @RequestBody Employee newEmployee){
@@ -44,11 +50,13 @@ public class EmployeeController {
                 }).orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
+
     @DeleteMapping("/employee/{id}")
     String deleteEmployee(@PathVariable Long id){
         if(!employeeRepository.existsById(id)){
             throw new EmployeeNotFoundException(id);
         }
+        examsMadeRepository.deleteAllExamsmadeByEmployee_id(id);
         employeeRepository.deleteById(id);
         return "Funcionário com ID " + id + " foi deletado com sucesso";
     }

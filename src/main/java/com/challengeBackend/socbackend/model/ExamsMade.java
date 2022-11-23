@@ -1,7 +1,10 @@
 
 package com.challengeBackend.socbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -10,6 +13,8 @@ public class ExamsMade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long examsMade_id;
+
+    private Date examsMade_date;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
@@ -25,6 +30,14 @@ public class ExamsMade {
 
     public void setExamsMade_id(Long examsMade_id) {
         this.examsMade_id = examsMade_id;
+    }
+
+    public Date getExamsMade_date() {
+        return examsMade_date;
+    }
+
+    public void setExamsMade_date(Date examsMade_date) {
+        this.examsMade_date = examsMade_date;
     }
 
     public Employee getEmployee() {
